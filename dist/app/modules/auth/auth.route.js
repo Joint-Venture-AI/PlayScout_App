@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AuthRoute = void 0;
+var express_1 = require("express");
+var auth_controller_1 = require("./auth.controller");
+var auth_1 = require("../../middlewares/auth/auth");
+var zodValidator_1 = __importDefault(require("../../middlewares/zodValidator"));
+var user_validation_1 = require("../users/user/user.validation");
+var router = (0, express_1.Router)();
+router.post("/create-user", (0, zodValidator_1.default)(user_validation_1.zodCreateUserSchema), auth_controller_1.AuthController.createUser);
+router.post("/login", auth_controller_1.AuthController.userLogin);
+router.get("/get-access-token", auth_controller_1.AuthController.getNewAccessToken);
+router.patch("/verify-user", auth_controller_1.AuthController.verifyUser);
+router.patch("/resend-code", auth_controller_1.AuthController.resendCode);
+router.patch("/forgot-password-request", auth_controller_1.AuthController.forgotPasswordRequest);
+router.patch("/reset-password", auth_controller_1.AuthController.resetPassword);
+router.patch("/update-password", (0, auth_1.auth)("USER"), auth_controller_1.AuthController.updatePassword);
+exports.AuthRoute = router;

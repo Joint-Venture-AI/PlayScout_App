@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserProfileRoute = void 0;
+var express_1 = require("express");
+var auth_1 = require("../../../middlewares/auth/auth");
+var fileUploadHandler_1 = require("../../../middlewares/fileUpload/fileUploadHandler");
+var userProfile_controller_1 = require("./userProfile.controller");
+var router = (0, express_1.Router)();
+router.patch("/update-profile-image", (0, auth_1.auth)("SUPERADMIN", "USER"), fileUploadHandler_1.upload.single("image"), userProfile_controller_1.UserProfileController.updateProfileImage);
+router.patch("/update-profile-data", (0, auth_1.auth)("SUPERADMIN", "USER"), userProfile_controller_1.UserProfileController.updateProfileData);
+exports.UserProfileRoute = router;

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "C:\\Abir-007\\Office_Projects\\PlayScout\\logs\\.fe66fff686314b6a7686a545553527085ba2a4e0-audit.json",
+    "files": [
+        {
+            "date": 1750574078541,
+            "name": "C:\\Abir-007\\Office_Projects\\PlayScout\\logs\\2025-06-22-rejections.log",
+            "hash": "a092a9559d26dc7d2bd6aeaa499baf2099de6ba3d6681e9483f3c3639b1a5274"
+        }
+    ],
+    "hashType": "sha256"
+}
