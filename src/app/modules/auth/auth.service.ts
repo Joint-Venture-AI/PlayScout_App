@@ -87,7 +87,7 @@ const userLogin = async (loginData: { email: string; password: string }) => {
   );
 
   return {
-    userData,
+    userData: { ...userData, password: null },
     accessToken,
     refreshToken,
   };
