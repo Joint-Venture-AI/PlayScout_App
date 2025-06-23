@@ -26,9 +26,9 @@ const createUser = async (data: {
   const userProfile = {
     fullName: data.fullName,
   };
-
+  const otp = getOtp(5).toString();
   const userAuthentication = {
-    otp: getOtp(5).toString(),
+    otp: otp,
     token: null,
     expDate: getExpiryTime(5),
   };
@@ -40,6 +40,13 @@ const createUser = async (data: {
     authentication: userAuthentication,
   });
   const savedUser = await userRepo.save(createUser);
+
+  await sendEmail(
+    data.email,
+    "Email Verification Code",
+    `Your code is: ${otp}`
+  );
+
   return { ...savedUser, authentication: {}, password: null };
 };
 

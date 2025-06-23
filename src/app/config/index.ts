@@ -7,10 +7,10 @@ export const appConfig = {
   database: {
     type: process.env.DB_TYPE,
     host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT || "5432"),
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    db_name: process.env.DB_NAME,
+    port: parseInt(process.env.DB_PORT as string),
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    db_name: process.env.POSTGRES_DB,
     dataBase_uri: process.env.DATABASE_URI, // Optional: if you're using full URI instead
   },
   server: {
